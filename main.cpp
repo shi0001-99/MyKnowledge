@@ -137,3 +137,29 @@ int main() {
     cout << str1;
     return 0;
 }
+
+//头部插入
+#include<iostream>
+#include<string>
+using namespace std;
+
+typedef struct Node Node;
+struct Node {
+    int data;
+    Node* next;
+};
+Node* InsCreate(int n){
+    Node* head = NULL;
+    for (int i = 1; i <= n; i++) {
+        Node* p = new Node;
+        p->data = i;
+        p->next = head;
+        head = p;
+    }
+    return head;
+}
+int main() {
+    Node* p = InsCreate(5);
+    cout << (p->data);
+    return 0;
+}
