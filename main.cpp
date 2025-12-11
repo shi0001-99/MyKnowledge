@@ -195,3 +195,42 @@ int main() {
     cout << (p->data);//输出1，实际上链表是1->2->3->4->5
     return 0;
 }
+
+//输出链表
+#include<iostream>
+#include<string>
+using namespace std;
+
+typedef struct Node Node;
+struct Node {
+    int data;
+    Node* next;
+};
+Node* AppendCreate(int n){
+    Node* head = NULL,*tail=NULL;
+    for (int i = 1; i <= n; i++) {
+        Node* p = new Node;
+        p->data = i;
+        p->next = NULL;
+        if (head == NULL) {
+            head = p;
+        }
+        else {
+            tail->next = p;
+        }
+        tail = p;
+    }
+    return head;
+}
+void PrintLink(Node* p) {
+    while (p != NULL) {
+        cout << (p->data) << "->";
+        p = p->next;
+    }
+    cout << "NULL";
+}
+int main() {
+    Node* p = AppendCreate(5);
+    PrintLink(p);
+    return 0;
+}
