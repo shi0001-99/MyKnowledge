@@ -236,3 +236,62 @@ int main() {
 }
 
 //插入节点
+
+
+
+
+
+//关于字符串，数组名与指针的辨析
+
+//输入多个名字
+//1.用二维数组
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main() {
+    char name[5][10];  //可以定义一个二维数组，存储输入的多个字符串
+    for (int i = 0; i < 5; i++) {
+        cin >> name[i];  //name[i]是这个字符串的名字（类似于指针）
+    }
+    for (int i = 0; i < 5; i++) {
+        cout << name[i];
+    }
+    return 0;
+}
+//2.用指针数组（麻烦）
+#include<iostream>
+#include<string>
+using namespace std;
+int main() {
+    char* name[5]；    
+    for (int i = 0; i < 5; i++) {
+        char* a = new char[10];//每次得新开辟一块空间，否则都指向一个字符数组char temp[10];
+        cin >> a;
+        name[i] = a;
+    }    
+    for (int i = 0; i < 5; i++) {
+        cout << name[i] << " ";
+        delete[] name[i];  // 记得释放内存
+    }
+    return 0;
+}
+
+//一维数组的数组名和指针的辨析
+#include <stdio.h>
+int main() {
+    char name[10] = "Hello";
+    
+    printf("name     = %p\n", (void*)name);      // 指向第一个字符的指针
+    printf("&name[0] = %p\n", (void*)&name[0]);  // 指向第一个字符的指针
+    printf("&name    = %p\n", (void*)&name);     // 指向整个数组的指针 类型是char(*)[10]  (二维数组数组名)
+
+    return 0;
+}
+//二维数组的数组名和指针的辨析
+char arr[3][4]={......};
+printf("arr         = %p\n", (void*)arr);          // 指向第一行（第一个一维数组）的指针
+printf("&arr[0]     = %p\n", (void*)&arr[0]);      // 同上(类型是char(*)[4])
+printf("arr[0]      = %p\n", (void*)arr[0]);       // 指向第一个元素的指针（相当于一维数组数组名）
+printf("&arr[0][0]  = %p\n", (void*)&arr[0][0]);   // 同上(类型是char*)
+printf("&arr        = %p\n", (void*)&arr);         // 指向整个二维数组的指针(类型是char(*)[3][4])
