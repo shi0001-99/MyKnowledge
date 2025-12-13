@@ -259,7 +259,22 @@ int main() {
     }
     return 0;
 }
-//2.用指针数组（麻烦）
+//2.用cpp里面的string 
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main() {
+    string names[5];
+    for (int i = 0; i < 5; i++) {
+        cin >> names[i];
+    }    
+    for (int i = 0; i < 5; i++) {
+        cout << names[i] << " ";
+    }
+    return 0;
+}
+//3.用指针数组（麻烦）
 #include<iostream>
 #include<string>
 using namespace std;
@@ -320,8 +335,7 @@ func3(arr[0]);      // 传递第一行
 func3(arr[1]);      // 传递第二行
 func3(&arr[2][0]);  // 传递第三行，等价写法
 // 形参写法1：指针
-void func3(char *p) 
-
+void func3(char *p)
 // 形参写法2：一维数组
 void func3(char p[]) 
 
