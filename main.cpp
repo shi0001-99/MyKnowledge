@@ -284,6 +284,7 @@ int main() {
     
     printf("name     = %p\n", (void*)name);      // 指向第一个字符的指针
     printf("&name[0] = %p\n", (void*)&name[0]);  // 指向第一个字符的指针
+
     printf("&name    = %p\n", (void*)&name);     // 指向整个数组的指针 类型是char(*)[10]  (二维数组数组名)
 
     return 0;
@@ -292,6 +293,53 @@ int main() {
 char arr[3][4]={......};
 printf("arr         = %p\n", (void*)arr);          // 指向第一行（第一个一维数组）的指针
 printf("&arr[0]     = %p\n", (void*)&arr[0]);      // 同上(类型是char(*)[4])
+
 printf("arr[0]      = %p\n", (void*)arr[0]);       // 指向第一个元素的指针（相当于一维数组数组名）
 printf("&arr[0][0]  = %p\n", (void*)&arr[0][0]);   // 同上(类型是char*)
+
 printf("&arr        = %p\n", (void*)&arr);         // 指向整个二维数组的指针(类型是char(*)[3][4])
+
+
+
+//形参写法汇总
+
+// 1.
+char arr[3][4];
+func1(arr);
+// 形参写法1：指针数组
+void func1(char (*p)[4])  //char(*p)[4]是指向数组的指针，   char *p[4]是指针数组
+    
+// 形参写法2：数组形式
+void func1(char p[][4]) 
+
+
+
+// 2.
+char arr[3][4];
+func3(arr[0]);      // 传递第一行
+func3(arr[1]);      // 传递第二行
+func3(&arr[2][0]);  // 传递第三行，等价写法
+// 形参写法1：指针
+void func3(char *p) 
+
+// 形参写法2：一维数组
+void func3(char p[]) 
+
+
+//3.
+char arr[3][4];
+func5(&arr);  // 传递整个数组的地址
+// 形参写法：指向整个二维数组的指针
+void func5(char (*p)[3][4]) 
+
+//4.
+char* arr[5];
+func1(arr, 5);
+void func1(char** p, int size)
+
+void func1(char* p[], int size)
+
+void func2(char* p[5]) //知道有几个单词
+
+func3(&arr)
+void func3(char* (*p)[5])
