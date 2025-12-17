@@ -298,7 +298,7 @@ int main() {
     char name[10] = "Hello";
     
     printf("name     = %p\n", (void*)name);      // 指向第一个字符的指针
-    printf("&name[0] = %p\n", (void*)&name[0]);  // 指向第一个字符的指针
+    printf("&name[0] = %p\n", (void*)&name[0]);  // 指向第一个字符的指针 类型是char*
 
     printf("&name    = %p\n", (void*)&name);     // 指向整个数组的指针 类型是char(*)[10]  (二维数组数组名)
 
@@ -349,7 +349,7 @@ void func5(char (*p)[3][4])
 //4.
 char* arr[5];
 func1(arr, 5);
-void func1(char** p, int size)
+void func1(char** p, int size) //指向指针的指针，所以是二级指针
 
 void func1(char* p[], int size)
 
