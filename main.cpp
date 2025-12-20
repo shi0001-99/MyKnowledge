@@ -357,3 +357,158 @@ void func2(char* p[5]) //知道有几个单词
 
 func3(&arr)
 void func3(char* (*p)[5])
+
+//链表输入的排序，交并差集的运算。
+#include <iostream>
+#include <string> 
+using namespace std;
+
+typedef struct Node {
+    int num;
+    Node* next;
+} Node;
+
+Node* Create() {
+    Node* head = NULL;
+    int temp;
+    cin >> temp;
+    while (temp != -1) {
+        Node* prev = NULL;
+        Node* curr = head;
+        while (curr && curr->num < temp) {
+            prev = curr;
+            curr = curr->next;
+        }
+        if (curr && curr->num == temp) {
+            cin >> temp;
+            continue;
+        }
+        Node* p = new Node;
+        p->num = temp;
+        p->next = curr;
+        if (prev == NULL) {
+            head = p;
+        }
+        else {
+            prev->next = p;
+        }
+        cin >> temp;
+    }
+    return head;
+}
+
+Node* append(Node* head, int num) {
+    Node* temp = head;
+    Node* p = new Node;
+    p->num = num;
+    p->next = NULL;
+    if (temp == NULL) {
+        return p;
+    }
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = p;
+    return head;
+}
+
+Node* bingji(Node* x, Node* y) {
+    Node* head = NULL;
+
+    while (x != NULL && y != NULL) {
+        if (x->num < y->num) {
+            head = append(head, x->num);
+            x = x->next;
+        }
+        else if (x->num > y->num) {
+            head = append(head, y->num);
+            y = y->next;
+        }
+        else { // 相等
+            head = append(head, x->num);
+            x = x->next;
+            y = y->next;
+        }
+    }
+    if (x == NULL) {
+        while (y) {
+            head = append(head, y->num);
+            y = y->next;
+        }
+    }
+    if (y == NULL) {
+        while (x) {
+            head = append(head, x->num);
+            x = x->next;
+        }
+    }
+    return head;
+}
+
+Node* jiaoji(Node* x, Node* y) {
+    Node* head = NULL;
+    while (x != NULL && y != NULL) {
+        if (x->num < y->num) {
+            x =x->next;
+        }
+        else if (x->num > y->num) {
+            y = y->next;
+        }
+        else { // 相等
+            head = append(head, x->num);
+            x = x->next;
+            y = y->next;
+        }
+    }
+    return head;
+}
+
+Node* chaji(Node* x, Node* y) {
+    Node* head = NULL;
+    while (x != NULL && y != NULL) {
+        if (x->num < y->num) {
+            head = append(head, x->num);
+            x = x->next;
+        }
+        else if (x->num > y->num) {
+            y = y->next;
+        }
+        else { // 相等，都不加入结果
+            x = x->next;
+            y = y->next;
+        }
+    }
+    if (x != NULL) {
+        while (x) {
+            head = append(head, x->num);
+            x = x->next;
+        }
+    }
+    return head;
+}
+
+void Print(Node* head) {
+    if (head == NULL) {
+        return;
+    }
+    while (head) {
+        cout << head->num << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* firstlink = Create();
+    Node* secondlink = Create();
+
+    // 创建并集、交集、差集
+    Node* jiao = jiaoji(firstlink, secondlink);
+    Node* bing = bingji(firstlink, secondlink);
+    Node* cha = chaji(firstlink, secondlink);
+
+    Print(jiao);
+    Print(bing);   
+    Print(cha);
+
+    return 0;
+}
