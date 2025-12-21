@@ -236,8 +236,51 @@ int main() {
 }
 
 //插入节点
+void InsertNode(Node* head,int i){
+    Node*current=head;
+    int j=1;
+    while(j<i && head && current->next!=NULL){//担心head为空
+        j++;
+        current=curtent->next;
+    }//结束之后current指向第i个或者最后一个节点
+    if(j==i){
+        Node*p=new Node;
+        int temp;
+        cin>>temp;
+        p->num=temp;
+        p->next=current->next;
+        current->next=p;
+    }
+    else{
+        cout<<"没有第"<<i<<"个节点";
+    }
+}
 
-
+//删除节点
+Node* DeleteNode(Node*head,int i){
+    if(i==1){
+        Node*current=head;
+        head=head->next;
+        delete current;
+    }
+    else{
+        Node*previous=head;
+        int j=1;
+        while(j<i-1 && previous->next!=NULL){
+            j++;
+            previous=previous->next;
+        }//previous指向第i-1个节点
+        if(previous->next!=NULL){
+            Node*current=previous->next;//current指向第i个节点
+            previous->next=current->next;
+            delete current;
+        }
+        else{
+            cout<<"没有第"<<i<<"个节点"；
+        }
+    }
+    return head;
+}
 
 
 
