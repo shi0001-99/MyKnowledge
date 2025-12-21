@@ -282,7 +282,14 @@ Node* DeleteNode(Node*head,int i){
     return head;
 }
 
-
+//整个链表的删除
+void DeleteLink(Node*head){
+    while(head){
+        Node*current=head;
+        head=head->next;
+        delete current;
+    }
+}
 
 //关于字符串，数组名与指针的辨析
 
