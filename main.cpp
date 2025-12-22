@@ -562,3 +562,58 @@ int main() {
 
     return 0;
 }
+
+//对一个链表排序
+Node* Create() {
+    Node* head = NULL,*tail=NULL;
+    int temp;
+    cin >> temp;
+    while (temp != -1) {
+        Node* p = new Node;
+        p->num = temp;
+        p->next = NULL;
+        if (head == NULL) {
+            head = p;
+        }
+        else {
+            tail->next = p;
+        }
+        tail = p;
+        cin >> temp;
+    }
+    return head;
+}
+Node* addnode(Node* head, Node* prev) {
+    if (prev->num < head->num) {
+        prev->next = head;
+        return prev;
+    }
+    Node* p = NULL, * q = head;
+    while (q) {
+        if (prev->num < q->num)//q是已经排好队的
+            break;
+        p = q;
+        q = q->next;
+    }
+    prev->next = q;
+    p->next = prev;
+    return head;
+
+}
+Node* sortlist(Node* head) {
+    Node* curr = head->next;
+    head->next = NULL;
+    while (curr) {
+        Node* prev = curr;
+        curr = curr->next;
+        head = addnode(head, prev);
+    }
+    return head;
+}
+
+
+
+
+
+
+
