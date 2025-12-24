@@ -177,7 +177,7 @@ int main() {
 #include<string>
 using namespace std;
 int main() {
-    char* name[5]；    
+    char* name[5];    
     for (int i = 0; i < 5; i++) {
         char* a = new char[10];//每次得新开辟一块空间，否则都指向一个字符数组char temp[10];
         cin >> a;
