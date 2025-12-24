@@ -670,11 +670,12 @@ int main() {
 char name[20]="tom";  //对
 name="jack";   //错，name不是左值表达式，name是常量
 scanf("%s",name);  //对，有内存空间
+cin>>name;  //可以
 
 const char* name="tom";  //对
 name="jack";    //对，可以让指针指向其他的字符串
 scanf("%s",name);   //注意指针指向的区域，如果name指向的区域是只读区，不可更改
-
+cin>>name;   //不行
 
 //早期库函数
 #include<string.h>
@@ -687,6 +688,46 @@ char* strncpy(char*dst,const char*s,int n)   //前n个字符的复制
 char*strcat(char*dst,const char*src);
 char*strncat(char*dst,const char*src);
 
+int strcpy(const char*s1,const char*s2)
+strcmp("student","study");  //返回-1
 
 
+//多个单词的排序，二维数组
+int main() {
+    char name[4][7] = { "zhao","qian","sun","li" };
+    char temp[7];
+    
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3 - i; j++) {
+            if (strcmp(name[j],name[j + 1]) > 0) {
+                strcpy_s(temp, name[j]);
+                strcpy_s(name[j], name[j+1]);
+                strcpy_s(name[j+1],temp);
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        cout << name[i];
+    }
+    return 0;
+}
 
+//多个单词的排序，指针数组
+int main() {
+    const char* name[4] = {"zhao","qian","sun","li"};
+    const char* temp;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3 - i; j++) {
+            if (strcmp(name[j], name[j + 1]) > 0) {
+                temp = name[j];
+                name[j] = name[j + 1];
+                name[j + 1] = temp;
+            }
+        }
+    }
+    
+    for (int i = 0; i < 4; i++) {
+        cout << name[i];
+    }
+    return 0;
+}
