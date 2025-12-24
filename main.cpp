@@ -616,6 +616,76 @@ Node* sortlist(Node* head) {
 
 
 
+#include <iostream>
+#include <string> 
+using namespace std;
+
+//当一维数组作为函数的参数的时候，通常要传入一维数组的名称和数组元素的数量
+//对于一维字符数组不需要传递元素数量，可以凭借'\0'确定中点
+
+//字符串反转
+void Reverse(char x[]) {
+    int i = 0, j = 0;
+    while (x[j] != '\0') {
+        j++;
+    }
+    j--;
+    for (; i < j; i++, j--) {
+        char temp = x[i];
+        x[i] = x[j];
+        x[j] = temp;
+    }
+}
+
+//字符串的拷贝
+void MyStrCopy(char t[],char s[]){
+    int i = 0;
+    while (s[i] != '\0') {
+        t[i] = s[i];
+        i++;
+    }
+    t[i] = s[i];//复制'\0'
+}
+
+int main() {
+    char name1[20] = {"joe"};//定义与初始化,带不带{ }都行
+    char name2[20];
+    cin >> name2;//字符数组的输入
+    cout << name2;//字符数组的输出
+
+    cout << name2 + 1;//右移一个字母
+    cout << (void*)name1;//输出地址
+
+    char str1[] = { 'h','e','l','l','o','\0' };//必须手动添加'\0'
+
+    char str2[10];
+    char* pstr = str2;//字符指针，相当于char* pstr=&str2[0]
+    
+    const char*pstr3="hello";//指针类型是const char*
+    cout<<pstr3;
+    return 0;
+}
+
+
+char name[20]="tom";  //对
+name="jack";   //错，name不是左值表达式，name是常量
+scanf("%s",name);  //对，有内存空间
+
+const char* name="tom";  //对
+name="jack";    //对，可以让指针指向其他的字符串
+scanf("%s",name);   //注意指针指向的区域，如果name指向的区域是只读区，不可更改
+
+
+//早期库函数
+#include<string.h>
+char str[]="hello";
+unsigned int strlen(str);  //计算字符串长度
+
+char* strcpy(char*dst,const char*s);  //字符串的复制
+char* strncpy(char*dst,const char*s,int n)   //前n个字符的复制
+
+char*strcat(char*dst,const char*src);
+char*strncat(char*dst,const char*src);
 
 
 
