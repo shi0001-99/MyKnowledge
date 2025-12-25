@@ -410,6 +410,121 @@ void DeleteLink(Node*head){
     }
 }
 
+#include <iostream>
+#include <string> 
+using namespace std;
+typedef struct Node {
+    int num;
+    Node* next;
+}Node;
+
+//单链表反转
+Node* reverselist(Node* head) {
+    Node* pre = NULL, * curr = head, * next;
+    while (curr) {
+        next = curr->next;
+        curr->next = pre;
+        pre = curr;
+        curr = next;
+    }
+    return pre;
+}
+//链表倒数第k个节点
+Node* getkfromend(Node* head,int k) {
+    Node* fast = head, * slow = head;
+    for (int i = 0; i < k; i++) {
+        fast = fast->next;
+    }
+    while (fast) {
+        fast = fast->next;
+        slow = slow->next;
+    }
+    return slow;
+}
+//链表中间的节点（偶数个返回靠左的那个节点）
+Node* middlenode(Node* head) {
+    Node* fast = head, * slow = head;
+    while (fast && fast->next) {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return slow;
+}
+//两两交换链表节点
+Node* swappairs(Node* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    Node* newhead = head->next;
+    head->next = newhead->next;
+    newhead->next = head;
+    Node* pre = head;
+    while (pre->next != NULL && pre->next->next != NULL) {
+        Node* a = pre->next;//a是pair前面的那个节点
+        Node* b = a->next;
+        a->next = b->next;
+        b->next = a;
+        pre->next = b;
+        pre = a;
+    }
+    return newhead;
+}
+//删除链表中重复元素（保留唯一）
+Node* deleteduplicates(Node* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    Node* curr = head;
+    while (curr->next) {
+        if (curr->num == curr->next->num) {
+            Node* temp = curr->next;
+            curr->next = curr->next->next;
+            delete temp;
+        }
+        else {
+            curr = curr->next;
+        }
+    }
+    return head;
+}
+//分割链表（小于x放前面，大于x放后面）
+Node* partition(Node* head, int x) {
+    if (head == NULL)
+        return head;
+    Node* small = NULL, * smalltail = NULL;
+    Node* large = NULL, * largetail = NULL;
+    Node* curr = head;
+    while (curr) {
+        if (curr->num < x) {
+            if (small == NULL) {
+                small = curr;
+                smalltail = curr;
+            }
+            else {
+                smalltail->next = curr;
+                smalltail = smalltail->next;
+            }
+        }
+        else {
+            //if
+            //else
+        }
+        curr=curr->next;
+    }
+    if (largetail) {
+        largetail->next = NULL;
+    }
+    if (small==NULL) {
+        return large;
+    }
+    smalltail->next = large;
+    return small;
+    
+}
+int main() {
+    
+    return 0;
+}
 
 //链表输入的排序，交并差集的运算。
 #include <iostream>
@@ -731,3 +846,5 @@ int main() {
     }
     return 0;
 }
+
+
