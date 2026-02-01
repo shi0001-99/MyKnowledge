@@ -855,3 +855,12 @@ void MySwap(T& a,T& b){
     a=b;
     b=temp;
 }
+
+void test1(){
+    int a=10;
+    int b=20;
+    //自动类型推导
+    MySwap(a,b);
+    //显式指定类型
+    MySwap<int>(a,b);
+}
