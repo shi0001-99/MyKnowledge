@@ -848,3 +848,10 @@ int main() {
 }
 
 
+//模板函数
+template<class T> //template<typename T>  template<class T1,,class T2,class T3> 只针对下面第一个函数起效
+void MySwap(T& a,T& b){
+    T temp=a;
+    a=b;
+    b=temp;
+}
