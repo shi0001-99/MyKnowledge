@@ -868,3 +868,5 @@ void test1(){
 //c编译过程：
 //index.cpp       经过 预编译器        index.i       经过 编译器       index.s           经过 汇编器       index.obj         经过 链接器      index.exe
 //               include、宏展开                                      还是英文                             二进制
+
+
