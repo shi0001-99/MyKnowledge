@@ -895,3 +895,12 @@ int main(){
     cout<<num<<endl;
     return 0;
 }
+
+
+#include<iostream>
+#include<vector>//动态数组，可变数组
+using namespace std;
+
+int main(){
+    return 0;
+}
