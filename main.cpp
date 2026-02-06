@@ -868,7 +868,30 @@ void test1(){
 //c编译过程：
 //index.cpp       经过 预编译器        index.i       经过 编译器       index.s           经过 汇编器       index.obj         经过 链接器      index.exe
 //               include、宏展开                                      还是英文                             二进制
+ 
 
 
-int arr[]={0,7,5,4,9,2,0}
-int *pbegin=arr;
+
+//算法  负责统计某个元素的个数
+int MyCount(int *start,int *end,int val){  //指针作为迭代器
+    int num=0;
+    while(start!=end){
+        if(*start==val){
+            num++;
+        }
+        start++;
+    }
+    return num;
+}
+
+
+int main(){
+    //数组  容器
+    int arr[]={0,7,5,4,9,2,0}
+    int *pBegin=arr;
+    int *pEnd=&(arr[sizeof(arr)/sizeof(arr[0])])
+
+    int num=MyCount(pBegin,pEnd,0);
+    cout<<num<<endl;
+    return 0;
+}
