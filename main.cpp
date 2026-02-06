@@ -870,3 +870,5 @@ void test1(){
 //               include、宏展开                                      还是英文                             二进制
 
 
+int arr[]={0,7,5,4,9,2,0}
+int *pbegin=arr;
