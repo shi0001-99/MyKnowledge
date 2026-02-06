@@ -899,8 +899,29 @@ int main(){
 
 #include<iostream>
 #include<vector>//动态数组，可变数组
+#include<algorithm>//算法
+
 using namespace std;
 
+void PrintVector(int v){
+    cout<<v;
+}
+void test01(){
+    vector<int> v;//定义一个容器，指定存放类型是int
+
+    v.push_back(10);//把10放进去
+    v.push_back(20);
+    v.push_back(30);
+    v.push_back(40);
+
+    //通过STL提供的for_each算法
+    //容器提供迭代器
+
+    vector<int>::iterator pBegin =v.begin();//vector<int>::iterator这是容器的迭代器 类型， pBegin是迭代器变量 名称
+    vector<int>::iterator pEnd =v.end();
+
+    for_each(pBegin,pEnd,PrintVector)
+}
 int main(){
     return 0;
 }
