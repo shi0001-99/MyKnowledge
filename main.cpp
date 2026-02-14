@@ -917,11 +917,53 @@ void test01(){
     //通过STL提供的for_each算法
     //容器提供迭代器
 
-    vector<int>::iterator pBegin =v.begin();//vector<int>::iterator这是容器的迭代器 类型， pBegin是迭代器变量 名称
-    vector<int>::iterator pEnd =v.end();
+    vector<int>::iterator pBegin =v.begin();
+    //vector<int>::iterator这是容器的迭代器 类型， pBegin是迭代器变量 名称
+    vector<int>::iterator pEnd =v.end();//指向最后一个元素的后面位置
+
+    vector<int>::iterator pRBegin =v.rbegin();//指向最后一个元素
+    vector<int>::iterator pRBegin =v.rend();//指向第一个元素的前面位置
 
     for_each(pBegin,pEnd,PrintVector)
+
+    for (auto it = v.begin(); it != v.end(); ++it) {
+        cout << *it << " ";
+    }
 }
 int main(){
     return 0;
 }
+
+
+//初始化
+int arr[]={2,3,4,1,9};
+vector <int> v1(arr,arr+sizeof(arr)/sizeof(int));
+vector <int> v2(v1.begin(),v1.end());
+vector <int> v3(v2);
+
+//赋值
+int arr[]={10,20,30,40};
+vector <int> v1=(arr,arr+sizeof(arr)/sizeof(int));
+
+vector <int> v2;
+v2.assign(v1.begin(),v1.end());
+
+vector <int> v3;
+v3=v2;
+
+vector <int> v4;
+v4.swap(v1);//交换v4和v1的值
+
+cout<<v4.size()<<endl;//容器里面有多少个元素
+
+if(v4.empty()){ //如果容器是空的返回true
+    cout<<"空"<<endl;
+}
+else{
+    cout<<"不空"<<endl;
+}
+
+v4.resize(2);//指定容器的长度，如果指定值小于元素个数，那么去掉多于元素。反之在不足位置添加默认值0
+v4.resize(6,1);//指定容器长度为6，把补全的元素改成1
+
+cout<<v4.capcity()<<endl;
