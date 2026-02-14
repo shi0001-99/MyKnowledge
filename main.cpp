@@ -966,4 +966,34 @@ else{
 v4.resize(2);//指定容器的长度，如果指定值小于元素个数，那么去掉多于元素。反之在不足位置添加默认值0
 v4.resize(6,1);//指定容器长度为6，把补全的元素改成1
 
-cout<<v4.capcity()<<endl;
+cout<<v4.capcity()<<endl;//容器的容量，容量大于等于size
+
+
+
+//vector存储数据
+int arr1[]={100,200,300,400};
+vector<int> v4(arr1,arr1+sizeof(arr1)/sizeof(int));//默认构造
+for(int i=0;i<v4.size();i++){
+    cout<<v4[i]<<" ";
+}
+cout<<endl;
+for(int i=0;i<v4.size();i++){
+    cout<<v4.at(i)<<" ";//at会抛出异常，更加安全
+}
+cout<<endl;
+
+v4.front()//返回第一个元素
+v4.back()//返回最后一个元素
+
+vector <int> v;
+v.push_back(10);
+v.push_back(20);
+//头插法
+v.insert(v.begin(),30);
+v.insert(v.end(),40);
+v.insert(v.begin()+2,100);//插到第二个位置，且vector支持随机访问
+
+v.erase(v.begin());
+v.erase(v.begin()+1,v.end());//删除这个区间内的元素
+
+v.clear();
