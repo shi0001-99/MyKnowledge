@@ -943,7 +943,9 @@ vector <int> v3(v2);
 
 //赋值
 int arr[]={10,20,30,40};
-vector <int> v1=(arr,arr+sizeof(arr)/sizeof(int));
+vector <int> v1(arr,arr+sizeof(arr)/sizeof(int));
+
+vector <int> v1 = {10,20,30,40};
 
 vector <int> v2;
 v2.assign(v1.begin(),v1.end());
@@ -1013,5 +1015,11 @@ for(deque<int>::iterator it=d4.begin();it!=d4.end();it++){
 } 
 
 //赋值 大小操作
-deque<int> d;
-d.assign(10,5);
+deque<int> d1;
+deque<int> d2;
+deque<int> d3;
+d1.assign(10,5); //10个5
+d2.assgin(d1.begin(),d2.end()); //迭代器区间赋值
+d3=d2; //等号赋值
+
+
