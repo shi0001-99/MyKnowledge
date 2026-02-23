@@ -997,3 +997,21 @@ v.erase(v.begin());
 v.erase(v.begin()+1,v.end());//删除这个区间内的元素
 
 v.clear();
+
+
+//deque容器
+#include<deque>
+//初始化
+deque<int> d1;
+deque<int> d2(10,5);  //构造函数把10个5拷贝给本身
+deque<int> d3(d2.begin(),d2.end());
+deque<int> d4(d3);
+
+//打印d4
+for(deque<int>::iterator it=d4.begin();it!=d4.end();it++){
+    cout<<*it;
+} 
+
+//赋值 大小操作
+deque<int> d;
+d.assign(10,5);
