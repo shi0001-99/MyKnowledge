@@ -1014,12 +1014,38 @@ for(deque<int>::iterator it=d4.begin();it!=d4.end();it++){
     cout<<*it;
 } 
 
-//赋值 大小操作
+//赋值操作
 deque<int> d1;
 deque<int> d2;
 deque<int> d3;
 d1.assign(10,5); //10个5
 d2.assgin(d1.begin(),d2.end()); //迭代器区间赋值
 d3=d2; //等号赋值
+d1.swap(d2); //交换两个空间的元素
 
+//大小操作
+if(d1.empty()){
+    cout<<"空"<<endl;
+}
+else{
+    cout<<"size:"<<d1.size()<<endl;
+}
 
+d1.resize(5); //长度改成5
+
+//deque容器的双端插入与删除
+d1.push_back(10);//尾部插入
+d1.push_front(10);//头部插入
+
+d1.pop_back(10);//尾部删除
+d1.pop_front(10);//头部删除
+
+void PrintDeque(deque<int> &d){
+    for(deque<int>::iterator it=d.begin();it!=d.end();it++){
+        cout<<*it<<" ";
+    }
+    cout<< endl;
+}
+
+int a=d1.front();//拿到第一个数据
+int b=d1.back();
