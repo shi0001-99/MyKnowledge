@@ -993,7 +993,7 @@ v.push_back(20);
 //头插法
 v.insert(v.begin(),30);
 v.insert(v.end(),40);
-v.insert(v.begin()+2,100);//插到第二个位置，且vector支持随机访问
+v.insert(v.begin()+2,100); //插到第二个位置，且vector支持随机访问
 
 v.erase(v.begin());
 v.erase(v.begin()+1,v.end()); //删除这个区间内的元素
