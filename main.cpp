@@ -1047,6 +1047,5 @@ void PrintDeque(deque<int> &d){
     cout<< endl;
 }
 
-
 int a=d1.front();//拿到第一个数据
 int b=d1.back();
