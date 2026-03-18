@@ -1049,3 +1049,17 @@ void PrintDeque(deque<int> &d){
 
 int a=d1.front();//拿到第一个数据
 int b=d1.back();
+
+string :
+string s="hello, world!";
+
+size_t pos=s.find("world"); //没有返回string::npos
+
+s.erase(5,7); //从5号位置开始(包括5),删除7个元素
+
+s.append("hello");
+
+s.insert(0,"hi!");
+
+s.replace(7,5,"earth"); //从7号位置开始,替换5个元素为"earth"
+
