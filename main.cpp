@@ -1051,6 +1051,7 @@ int a=d1.front();//拿到第一个数据
 int b=d1.back();
 
 string :
+
 string s="hello, world!";
 
 size_t pos=s.find("world"); //没有返回string::npos
@@ -1062,4 +1063,20 @@ s.append("hello");
 s.insert(0,"hi!");
 
 s.replace(7,5,"earth"); //从7号位置开始,替换5个元素为"earth"
+
+#include<cctype>   //字符判断函数库
+isalnum()
+
+isalpha()
+isdigit()
+
+isspace()
+
+ispunct()
+
+islower()
+isupper()
+
+tolower()
+toupper()
 
