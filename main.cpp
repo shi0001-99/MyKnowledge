@@ -1080,3 +1080,11 @@ isupper()
 tolower()
 toupper()
 
+
+vector:
+
+vector<int> vec={1,2,3,4,5};
+
+vec.insert(vec.begin()+2,3); //在索引为2的地方插入3
+
+vec.erase(vec.begin());
